@@ -152,7 +152,8 @@
       "serialMonitor": "Монітор порту",
       "type": "Тіп",
       "unknown": "Невідомо",
-      "updateable": "Можливість оновлення"
+      "updateable": "Можливість оновлення",
+      "userAbort": "User abort"
     },
     "compile": {
       "error": "Помилка компілятора: {0}"
@@ -213,7 +214,6 @@
       "debuggingNotSupported": "Налагодження не підтримується з '{0}'",
       "getDebugInfo": "Getting debug info...",
       "noPlatformInstalledFor": "Не встановлення платформа для  '{0}'",
-      "noProgrammerSelectedFor": "No programmer selected for '{0}'",
       "optimizeForDebugging": "Оптимізація для налагодження",
       "sketchIsNotCompiled": "Скетч'{0}' повинен бути перевірений до початку налагодження. Будь ласка, перевірте скетч та запустіть налагодження знову. Бажаєте перевірити скетч зараз?"
     },
