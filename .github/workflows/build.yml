@@ -53,74 +53,18 @@ env:
   STAGED_CHANNEL_FILES_ARTIFACT: staged-channel-files
   BASE_BUILD_DATA: |
     - config:
-        # Human identifier for the job.
-        name: Windows
-        runs-on: windows-2019
-        # The value is a string representing a JSON document.
-        # Setting this to null causes the job to run directly in the runner machine instead of in a container.
-        container: |
-          null
-        # Name of the secret that contains the certificate.
-        certificate-secret: WINDOWS_SIGNING_CERTIFICATE_PFX
-        # Name of the secret that contains the certificate password.
-        certificate-password-secret: WINDOWS_SIGNING_CERTIFICATE_PASSWORD
-        # File extension for the certificate.
-        certificate-extension: pfx
-        # Quoting on the value is required here to allow the same comparison expression syntax to be used for this
-        # and the companion needs.select-targets.outputs.merge-channel-files property (output values always have string
-        # type).
-        mergeable-channel-file: 'false'
-      artifacts:
-        - path: '*Windows_64bit.exe'
-          name: Windows_X86-64_interactive_installer
-        - path: '*Windows_64bit.msi'
-          name: Windows_X86-64_MSI
-        - path: '*Windows_64bit.zip'
-          name: Windows_X86-64_zip
-    - config:
         name: Linux
-        runs-on: ubuntu-latest
+        runs-on: self-hosted
         container: |
           {
             \"image\": \"ghcr.io/arduino/arduino-ide/linux:main\"
           }
         mergeable-channel-file: 'false'
       artifacts:
-        - path: '*Linux_64bit.zip'
-          name: Linux_X86-64_zip
-        - path: '*Linux_64bit.AppImage'
-          name: Linux_X86-64_app_image
-    - config:
-        name: macOS x86
-        runs-on: macos-latest
-        container: |
-          null
-        # APPLE_SIGNING_CERTIFICATE_P12 secret was produced by following the procedure from:
-        # https://www.kencochrane.com/2020/08/01/build-and-sign-golang-binaries-for-macos-with-github-actions/#exporting-the-developer-certificate
-        certificate-secret: APPLE_SIGNING_CERTIFICATE_P12
-        certificate-password-secret: KEYCHAIN_PASSWORD
-        certificate-extension: p12
-        mergeable-channel-file: 'true'
-      artifacts:
-        - path: '*macOS_64bit.dmg'
-          name: macOS_X86-64_dmg
-        - path: '*macOS_64bit.zip'
-          name: macOS_X86-64_zip
-  PAID_RUNNER_BUILD_DATA: |
-    - config:
-        name: macOS ARM
-        runs-on: macos-latest-xlarge
-        container: |
-          null
-        certificate-secret: APPLE_SIGNING_CERTIFICATE_P12
-        certificate-password-secret: KEYCHAIN_PASSWORD
-        certificate-extension: p12
-        mergeable-channel-file: 'true'
-      artifacts:
-        - path: '*macOS_arm64.dmg'
-          name: macOS_arm64_dmg
-        - path: '*macOS_arm64.zip'
-          name: macOS_arm64_zip
+        - path: '*Linux_arm64bit.zip'
+          name: Linux_arm-64_zip
+        - path: '*Linux_arm64bit.AppImage'
+          name: Linux_arm-64_app_image
 
 jobs:
   run-determination:
