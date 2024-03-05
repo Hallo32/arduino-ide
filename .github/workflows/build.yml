@@ -214,7 +214,7 @@ jobs:
       matrix:
         config: ${{ fromJson(needs.select-targets.outputs.build-matrix) }}
     runs-on: ${{ matrix.config.runs-on }}
-    container: ${{ fromJSON(matrix.config.container) }}
+    #container: ${{ fromJSON(matrix.config.container) }}
     defaults:
       run:
         # Avoid problems caused by different default shell for container jobs (sh) vs non-container jobs (bash).
