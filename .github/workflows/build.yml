@@ -55,10 +55,6 @@ env:
     - config:
         name: Linux
         runs-on: self-hosted
-        container: |
-          {
-            \"image\": \"ghcr.io/arduino/arduino-ide/linux:main\"
-          }
         mergeable-channel-file: 'false'
       artifacts:
         - path: '*Linux_arm64bit.zip'
