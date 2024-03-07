@@ -424,11 +424,11 @@ jobs:
         artifact: ${{ fromJson(needs.select-targets.outputs.artifact-matrix) }}
 
     steps:
-      - name: Download job transfer artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: ${{ env.JOB_TRANSFER_ARTIFACT }}
-          path: ${{ env.JOB_TRANSFER_ARTIFACT }}
+#      - name: Download job transfer artifact
+#        uses: actions/download-artifact@v3
+#        with:
+#          name: ${{ env.JOB_TRANSFER_ARTIFACT }}
+#          path: ${{ env.JOB_TRANSFER_ARTIFACT }}
 
       - name: Upload tester build artifact
         uses: actions/upload-artifact@v3
