@@ -56,6 +56,7 @@ env:
         name: Linux
         runs-on: self-hosted
         mergeable-channel-file: 'false'
+        container: null
       artifacts:
         - path: '*Linux_arm64bit.zip'
           name: Linux_arm-64_zip
@@ -214,7 +215,7 @@ jobs:
       matrix:
         config: ${{ fromJson(needs.select-targets.outputs.build-matrix) }}
     runs-on: ${{ matrix.config.runs-on }}
-    #container: ${{ fromJSON(matrix.config.container) }}
+    container: ${{ fromJSON(matrix.config.container) }}
     defaults:
       run:
         # Avoid problems caused by different default shell for container jobs (sh) vs non-container jobs (bash).
