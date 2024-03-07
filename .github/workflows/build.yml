@@ -56,7 +56,8 @@ env:
         name: Linux
         runs-on: self-hosted
         mergeable-channel-file: 'false'
-        container: null
+        container: |
+          null
       artifacts:
         - path: '*Linux_arm64bit.zip'
           name: Linux_arm-64_zip
