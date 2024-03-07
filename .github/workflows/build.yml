@@ -365,11 +365,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Download staged-for-merge channel files artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: ${{ env.STAGED_CHANNEL_FILES_ARTIFACT }}
-          path: ${{ env.CHANNEL_FILES_PATH }}
+      #- name: Download staged-for-merge channel files artifact
+      #  uses: actions/download-artifact@v3
+      #  with:
+      #    name: ${{ env.STAGED_CHANNEL_FILES_ARTIFACT }}
+      #    path: ${{ env.CHANNEL_FILES_PATH }}
 
       - name: Remove no longer needed artifact
         uses: geekyeggo/delete-artifact@v2
