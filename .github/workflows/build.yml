@@ -92,7 +92,7 @@ env:
         runs-on: ubuntu-latest
         container: |
           {
-            \"image\": \"ghcr.io/arduino/arduino-ide/linux:main\"
+            \"image\": \"ghcr.io/hallo32/arduino-ide/linux:main\"
           }
         job-transfer-artifact-suffix: Linux_64bit
         mergeable-channel-file: 'false'
