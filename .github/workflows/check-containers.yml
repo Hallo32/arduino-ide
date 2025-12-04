@@ -37,7 +37,7 @@ jobs:
       matrix:
         image:
           - path: .github/workflows/assets/linux.Dockerfile
-          - patH: .github/workflows/assets/linux_arm.Dockerfile
+          #- path: .github/workflows/assets/linux_arm.Dockerfile
 
     steps:
       - name: Checkout repository
@@ -50,6 +50,7 @@ jobs:
           file: ${{ matrix.image.path }}
           push: true
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          platforms: linux/arm64,linux/amd
 
       - name: Run container
         run: |
