@@ -106,7 +106,7 @@ env:
         runs-on: ubuntu-24.04-arm
         container: |
           {
-            \"image\": \"ghcr.io/arduino/arduino-ide/linux:main\"
+            \"image\": \"ghcr.io/hallo32/arduino-ide/linux:main\"
           }
         job-transfer-artifact-suffix: Linux_arm
         mergeable-channel-file: 'false'
