@@ -22,11 +22,11 @@ jobs:
     if: >
       (
         github.event_name != 'pull_request' &&
-        github.repository == 'arduino/arduino-ide'
+        github.repository == 'hallo32/arduino-ide'
       ) ||
       (
         github.event_name == 'pull_request' &&
-        github.event.pull_request.head.repo.full_name == 'arduino/arduino-ide'
+        github.event.pull_request.head.repo.full_name == 'hallo32/arduino-ide'
       )
     runs-on: ubuntu-latest
     permissions:
