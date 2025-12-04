@@ -10,7 +10,6 @@ RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
       git \
       python3 \
-      python3-minimal \
       libsecret-1-dev \
       libx11-dev \
       libxkbfile-dev && \
@@ -20,6 +19,3 @@ RUN apt-get update && \
 # Git safe.directory setzen, damit Aktionen im Container nicht fehlschlagen
 RUN git config --add --global safe.directory "/__w/arduino-ide/arduino-ide"
 ENV GIT_CONFIG_GLOBAL="/root/.gitconfig"
-
-# Symlink sicherstellen: python3 zeigt auf die aktuelle Python-Version
-RUN ln -sf "$(which python3)" /usr/bin/python3
