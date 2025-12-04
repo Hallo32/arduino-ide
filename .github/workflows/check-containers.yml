@@ -36,7 +36,7 @@ jobs:
       fail-fast: false
       matrix:
         image:
-          - path: [.github/workflows/assets/linux.Dockerfile, .github/workflows/assets/linux_arm.Dockerfile]
+          - path: [".github/workflows/assets/linux.Dockerfile", ".github/workflows/assets/linux_arm.Dockerfile"]
 
     steps:
       - name: Checkout repository
