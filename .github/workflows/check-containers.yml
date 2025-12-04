@@ -13,15 +13,13 @@ on:
       - "**/Dockerfile"
   repository_dispatch:
   schedule:
-    # Run periodically to catch breakage caused by external changes.
     - cron: "0 7 * * MON"
   workflow_dispatch:
 
 jobs:
   run:
-    name: Run (${{ matrix.image.path }})
+    name: Build & Push (${{ matrix.image.path }})
     runs-on: ubuntu-latest
-    permissions: {}
     services:
       registry:
         image: registry:2
@@ -30,27 +28,26 @@ jobs:
 
     env:
       IMAGE_NAME: name/app:latest
-      REGISTRY: localhost:5000
+      REGISTRY: registry:5000   # Alias statt localhost
 
     strategy:
       fail-fast: false
       matrix:
         image:
-          - path: .github/workflows/assets/linux.Dockerfile
-          #- path: .github/workflows/assets/linux_arm.Dockerfile
-
+          - path: ".github/workflows/assets/linux.Dockerfile"
+          
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
-      
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
         with:
           install: true
           driver-opts: image=moby/buildkit:latest
-    
-      - name: Checkout repository
-        uses: actions/checkout@v5
 
       - name: Build and push to local registry
         uses: docker/build-push-action@v6
@@ -59,11 +56,4 @@ jobs:
           file: ${{ matrix.image.path }}
           push: true
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-          platforms: linux/arm64,linux/amd64
-
-      - name: Run container
-        run: |
-          docker \
-            run \
-              --rm \
-              ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          platforms: linux/amd64,linux/arm64
