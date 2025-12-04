@@ -11,6 +11,7 @@ RUN apt-get update && \
       git \
       python3 \
       python3-distutils-extra \
+      make \
       libsecret-1-dev \
       libx11-dev \
       libxkbfile-dev && \
