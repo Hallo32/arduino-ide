@@ -10,7 +10,7 @@ RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
       git \
       python3 \
-      python3-distutils \
+      python3-distutils-extra \
       libsecret-1-dev \
       libx11-dev \
       libxkbfile-dev && \
