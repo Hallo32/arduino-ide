@@ -48,7 +48,7 @@ env:
   GO_VERSION: '1.21'
   # See: https://github.com/actions/setup-node/#readme
   NODE_VERSION: '22.21'
-  YARN_VERSION: '4.12'
+  YARN_VERSION: '1.22.22'
   JOB_TRANSFER_ARTIFACT_PREFIX: build-artifacts-
   CHANGELOG_ARTIFACTS: changelog
   STAGED_CHANNEL_FILE_ARTIFACT_PREFIX: staged-channel-file-
