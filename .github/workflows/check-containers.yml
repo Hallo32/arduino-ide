@@ -59,7 +59,7 @@ jobs:
           file: ${{ matrix.image.path }}
           push: true
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-          platforms: linux/arm64,linux/amd
+          platforms: linux/arm64,linux/amd64
 
       - name: Run container
         run: |
