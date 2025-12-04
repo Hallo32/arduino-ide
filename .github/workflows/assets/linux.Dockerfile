@@ -2,7 +2,8 @@
 # syntax=docker/dockerfile:1
 
 # Basisimage: Ubuntu 24.04 (aktuell und LTS)
-FROM ubuntu:noble # necessary for multi-arch support
+# noble necessary for multi-arch support
+FROM ubuntu:noble 
 
 # Update Paketquellen und installiere benötigte Pakete
 RUN apt-get update && \
