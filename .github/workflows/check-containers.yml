@@ -20,15 +20,10 @@ jobs:
   run:
     name: Build & Push (${{ matrix.image.path }})
     runs-on: ubuntu-latest
-    services:
-      registry:
-        image: registry:2
-        ports:
-          - 5000:5000
 
     env:
       IMAGE_NAME: name/app:latest
-      REGISTRY: registry:5000   # Alias statt localhost
+      REGISTRY: 127.0.0.1:5000
 
     strategy:
       fail-fast: false
@@ -40,6 +35,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+        # Registry im Runner starten
+      - name: Start local registry
+        run: docker run -d -p 5000:5000 --name registry registry:2
+        
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
 
