@@ -47,7 +47,7 @@ jobs:
             registry: ghcr.io
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Start local registry
         run: docker run -d -p 5000:5000 --name registry registry:2
